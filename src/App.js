@@ -27,7 +27,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React app</h1>
-        <button onClick={() => this.switchNameHandler("JB")}>
+        <button
+          // can be inefficnent
+          onClick={() => this.switchNameHandler("JB")}
+        >
           Switch name
         </button>
         <Person
@@ -37,6 +40,7 @@ class App extends Component {
         <Person
           name={this.state.people[1].name}
           age={this.state.people[1].age}
+          // more recommended approach for performance
           click={this.switchNameHandler.bind(this, "JRS")}
         />
         <Person name={this.state.people[2].name} age={this.state.people[2].age}>
