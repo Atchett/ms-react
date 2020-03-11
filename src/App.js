@@ -13,11 +13,20 @@ class App extends Component {
   };
 
   switchNameHandler = newName => {
-    //console.log("Was clicked");
     this.setState({
       people: [
         { name: newName, age: 44 },
         { name: "Bobs", age: 3 },
+        { name: "Leo", age: 6 }
+      ]
+    });
+  };
+
+  nameChangedHandler = event => {
+    this.setState({
+      people: [
+        { name: "John", age: 44 },
+        { name: event.target.value, age: 3 },
         { name: "Leo", age: 6 }
       ]
     });
@@ -42,6 +51,7 @@ class App extends Component {
           age={this.state.people[1].age}
           // more recommended approach for performance
           click={this.switchNameHandler.bind(this, "JRS")}
+          changed={this.nameChangedHandler}
         />
         <Person name={this.state.people[2].name} age={this.state.people[2].age}>
           I like racing.
