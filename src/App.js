@@ -3,17 +3,20 @@ import "./App.css";
 import Person from "./Person/Person";
 
 const App = props => {
-  const [peopleState, setPeople] = useState({
+  const [peopleState, setPeopleState] = useState({
     people: [
       { name: "John", age: 44 },
       { name: "Bobs", age: 3 },
       { name: "Leo", age: 6 }
-    ],
+    ]
+  });
+
+  const [otherState, setOtherState] = useState({
     otherState: "some other value"
   });
 
   const switchNameHandler = () => {
-    setPeople({
+    setPeopleState({
       people: [
         { name: "JB", age: 44 },
         { name: "Bobs", age: 3 },
@@ -21,6 +24,8 @@ const App = props => {
       ]
     });
   };
+
+  console.log(peopleState, otherState);
 
   return (
     <div className="App">
