@@ -18,7 +18,7 @@ class App extends Component {
       people: [
         { name: "JB", age: 44 },
         { name: "Bobs", age: 3 },
-        { name: "Leo", age: 7 }
+        { name: "Leo", age: 6 }
       ]
     });
   };
@@ -35,6 +35,7 @@ class App extends Component {
         <Person
           name={this.state.people[1].name}
           age={this.state.people[1].age}
+          click={this.switchNameHandler}
         />
         <Person name={this.state.people[2].name} age={this.state.people[2].age}>
           I like racing.
