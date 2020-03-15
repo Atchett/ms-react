@@ -15,7 +15,7 @@ class App extends Component {
 
   deletePersonHandler = personId => {
     // creates a copy
-    const people = this.state.people.slice();
+    const people = [...this.state.people];
     people.splice(personId, 1);
     this.setState({ people: people });
   };
