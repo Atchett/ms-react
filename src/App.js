@@ -9,7 +9,8 @@ class App extends Component {
       { name: "Bobs", age: 3 },
       { name: "Leo", age: 6 }
     ],
-    otherState: "some other value"
+    otherState: "some other value",
+    showPeople: false
   };
 
   switchNameHandler = newName => {
@@ -20,6 +21,11 @@ class App extends Component {
         { name: "Leo", age: 6 }
       ]
     });
+  };
+
+  togglePeopleHandler = () => {
+    const doesShow = this.state.showPeople;
+    this.setState({ showPeople: !doesShow });
   };
 
   nameChangedHandler = event => {
@@ -46,25 +52,30 @@ class App extends Component {
         <h1>React app</h1>
         <button
           // can be inefficnent
-          onClick={() => this.switchNameHandler("JB")}
+          onClick={this.togglePeopleHandler}
           style={style}
         >
-          Switch name
+          Toggle people
         </button>
-        <Person
-          name={this.state.people[0].name}
-          age={this.state.people[0].age}
-        />
-        <Person
-          name={this.state.people[1].name}
-          age={this.state.people[1].age}
-          // more recommended approach for performance
-          click={this.switchNameHandler.bind(this, "JRS")}
-          changed={this.nameChangedHandler}
-        />
-        <Person name={this.state.people[2].name} age={this.state.people[2].age}>
-          I like racing.
-        </Person>
+        {this.state.showPeople ? (
+          <div>
+            <Person
+              name={this.state.people[0].name}
+              age={this.state.people[0].age}
+            />
+            <Person
+              name={this.state.people[1].name}
+              age={this.state.people[1].age}
+              changed={this.nameChangedHandler}
+            />
+            <Person
+              name={this.state.people[2].name}
+              age={this.state.people[2].age}
+            >
+              I like racing.
+            </Person>
+          </div>
+        ) : null}
       </div>
     );
   }
