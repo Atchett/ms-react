@@ -47,6 +47,29 @@ class App extends Component {
       cursor: "pointer"
     };
 
+    let people = null;
+    if (this.state.showPeople) {
+      people = (
+        <div>
+          <Person
+            name={this.state.people[0].name}
+            age={this.state.people[0].age}
+          />
+          <Person
+            name={this.state.people[1].name}
+            age={this.state.people[1].age}
+            changed={this.nameChangedHandler}
+          />
+          <Person
+            name={this.state.people[2].name}
+            age={this.state.people[2].age}
+          >
+            I like racing.
+          </Person>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>React app</h1>
@@ -57,25 +80,7 @@ class App extends Component {
         >
           Toggle people
         </button>
-        {this.state.showPeople ? (
-          <div>
-            <Person
-              name={this.state.people[0].name}
-              age={this.state.people[0].age}
-            />
-            <Person
-              name={this.state.people[1].name}
-              age={this.state.people[1].age}
-              changed={this.nameChangedHandler}
-            />
-            <Person
-              name={this.state.people[2].name}
-              age={this.state.people[2].age}
-            >
-              I like racing.
-            </Person>
-          </div>
-        ) : null}
+        {people}
       </div>
     );
   }
