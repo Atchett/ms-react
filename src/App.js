@@ -13,14 +13,10 @@ class App extends Component {
     showPeople: false
   };
 
-  switchNameHandler = newName => {
-    this.setState({
-      people: [
-        { name: newName, age: 44 },
-        { name: "Bobs", age: 3 },
-        { name: "Leo", age: 6 }
-      ]
-    });
+  deletePersonHandler = personId => {
+    const people = this.state.people;
+    people.splice(personId, 1);
+    this.setState({ people: people });
   };
 
   togglePeopleHandler = () => {
@@ -48,10 +44,21 @@ class App extends Component {
     };
 
     let people = null;
+
     if (this.state.showPeople) {
       people = (
         <div>
-          <Person
+          {this.state.people.map((person, index) => {
+            return (
+              <Person
+                key={index}
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+              />
+            );
+          })}
+          {/* <Person
             name={this.state.people[0].name}
             age={this.state.people[0].age}
           />
@@ -65,7 +72,7 @@ class App extends Component {
             age={this.state.people[2].age}
           >
             I like racing.
-          </Person>
+          </Person> */}
         </div>
       );
     }
