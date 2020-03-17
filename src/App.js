@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import classes from "./App.css";
 import Person from "./Person/Person";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -29,7 +28,7 @@ class App extends Component {
   nameChangedHandler = (event, id) => {
     // find the index of the person we need in the person array in state
     const personIndex = this.state.people.findIndex(p => {
-      return p.id === id;
+      return p.userId === id;
     });
 
     // create a copy of the person in state
@@ -59,14 +58,13 @@ class App extends Component {
         <div>
           {this.state.people.map((person, index) => {
             return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  changed={event => this.nameChangedHandler(event, person.id)}
-                  name={person.name}
-                  age={person.age}
-                />
-              </ErrorBoundary>
+              <Person
+                key={person.id}
+                click={() => this.deletePersonHandler(index)}
+                changed={event => this.nameChangedHandler(event, person.id)}
+                name={person.name}
+                age={person.age}
+              />
             );
           })}
         </div>
