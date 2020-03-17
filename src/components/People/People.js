@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import Person from "./Person/Person";
 
 class People extends Component {
+  // Depracted
   // static getDerivedStateFromProps(props, state) {
   //   console.log("[People.js] getDerivedStateFromProps", props);
   //   return state;
   // }
 
+  // Depracted
   // componentWillReceiveProps(props) {
   //   console.log("[People.js] componentWillReceiveProps", props);
   // }
@@ -21,6 +23,7 @@ class People extends Component {
     return null;
   }
 
+  // Depracted
   // componentWillUpdate() {
   //   console.log("[People.js] componentWillUpdate");
   // }
