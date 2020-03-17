@@ -4,6 +4,11 @@ import People from "../components/People/People";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     people: [
       { id: 1, name: "John", age: 44 },
@@ -13,6 +18,20 @@ class App extends Component {
     otherState: "some other value",
     showPeople: false
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  // Depracted
+  // componentWillMount() {
+  //   console.log("[App.js] componentWillMount");
+  // }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
 
   deletePersonHandler = personId => {
     // creates a copy
@@ -51,6 +70,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] render");
     let people = null;
 
     if (this.state.showPeople) {
