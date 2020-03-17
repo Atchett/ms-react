@@ -2,12 +2,24 @@ import React, { useEffect } from "react";
 import classes from "./Cockpit.css";
 
 const Cockpit = props => {
+  // runs once
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
     setTimeout(() => {
       alert("some alert");
     }, 1000);
+    return () => {
+      console.log("[Cockpit.js] useEffect - cleanup");
+    };
   }, []);
+
+  // runs on every cycle
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect 2");
+    return () => {
+      console.log("[Cockpit.js] useEffect 2 - cleanup");
+    };
+  });
 
   const assignedClasses = [];
   let btnClass = "";
